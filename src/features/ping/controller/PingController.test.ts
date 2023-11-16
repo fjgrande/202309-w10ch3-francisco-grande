@@ -21,7 +21,7 @@ describe("Given a PingController's controller", () => {
     test("Then it should call the response's method json with a'🏓'", () => {
       const expectedMessage = { message: "🏓" };
 
-      expect(res.status(200).json).toHaveBeenCalledWith(expectedMessage);
+      expect(res.json).toHaveBeenCalledWith(expectedMessage);
     });
   });
 });
