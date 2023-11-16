@@ -1,14 +1,13 @@
 import chalk from "chalk";
-import debug from "debug";
 import mongoose from "mongoose";
 
-const connectToDataBase = async (mongoUrl: string) => {
+const connectToDataBase = async (mongoDbConnection: string) => {
   try {
-    await mongoose.connect(mongoUrl);
+    await mongoose.connect(mongoDbConnection);
 
-    debug(chalk.greenBright("Connected to database"));
+    console.log(chalk.greenBright("Connected to database"));
   } catch (error) {
-    debug(chalk.redBright("Imposible to connect to database"));
+    console.log(chalk.redBright("Unable to connect to database"));
   }
 };
 

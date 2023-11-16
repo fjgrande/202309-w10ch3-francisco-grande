@@ -1,16 +1,18 @@
-import express from "express";
 import chalk from "chalk";
-import debug from "debug";
+
 import app from "./server/app.js";
+import connectToDataBase from "./database/index.js";
 
 const port = process.env.PORT ?? 4000;
 const mongoDbConnection = process.env.MONGODB_URL;
 
 if (!mongoDbConnection) {
-  debug(`${chalk.red("Missing enviroment variable. Exiting...")}`);
+  console.log(`${chalk.red("Missing enviroment variable. Exiting...")}`);
   process.exit();
 }
 
 app.listen(+port, () => {
-  debug(chalk.green(`Listening on http://localhost:${port}`));
+  console.log(chalk.green(`Listening on http://localhost:${port}`));
 });
+
+await connectToDataBase(mongoDbConnection);

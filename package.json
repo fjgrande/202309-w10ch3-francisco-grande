@@ -44,13 +44,7 @@
     "husky": "^8.0.0",
     "typescript": "^5.2.2"
   },
-  "babel": {
-    "env": {
-      "test": {
-        "plugins": [
-          "@babel/plugin-transform-modules-commonjs"
-        ]
-      }
-    }
+  "engines": {
+    "node": ">=18.18.0 <21.1.0"
   }
 }
