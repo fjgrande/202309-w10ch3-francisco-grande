@@ -1,10 +1,16 @@
-import morgan from "morgan";
-import app from "./app.js";
 import express from "express";
-import pingRouter from "./features/ping/router/pingRouter.js";
+import chalk from "chalk";
+import debug from "debug";
+import app from "./server/app.js";
 
-app.use(morgan("dev"));
+const port = process.env.PORT ?? 4000;
+const mongoDbConnection = process.env.MONGODB_URL;
 
-app.use(express.json());
+if (!mongoDbConnection) {
+  debug(`${chalk.red("Missing enviroment variable. Exiting...")}`);
+  process.exit();
+}
 
-app.use("/", pingRouter);
+app.listen(+port, () => {
+  debug(chalk.green(`Listening on http://localhost:${port}`));
+});
